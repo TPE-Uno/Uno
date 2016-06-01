@@ -1,5 +1,8 @@
 package Jugador;
 import java.util.List;
+
+import Cartas.Carta;
+
 import java.util.ArrayList;
 
 public class Mano {
@@ -38,6 +41,7 @@ public class Mano {
 		for(int i=0; i<this.mano.size(); i++){
 			string += this.mano.get(i).toString();
 		}
+		return string;
 	}
 	
 	
