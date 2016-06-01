@@ -5,6 +5,7 @@ public class Jugador {
 	private String nombre;
 	private int puntaje;
 	private Mano mano; 
+	private boolean uno = false; 
 	
 	public Jugador (String nombre){
 		this.nombre = nombre;
@@ -29,7 +30,15 @@ public class Jugador {
 	}
 	
 	public void incrementarPuntaje(int puntaje){
-		this.puntaje+=puntaje; //setPuntaje(this.puntaje + puntaje); 
+		this.puntaje += puntaje; //setPuntaje(this.puntaje + puntaje); 
+	}
+	
+	public void actualizarUno(){
+		this.uno = false; 
+	}
+	
+	public void decirUno(){
+		this.uno = true; 
 	}
 		
 }

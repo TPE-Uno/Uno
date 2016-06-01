@@ -4,42 +4,26 @@ import java.util.ArrayList;
 
 public class Mano {
 
-	private List <Integer> mano;
+	private List <Carta> mano;
 	public static final int totalCartas = 7;
 	
 	
 	public Mano (){
-		mano = new ArrayList<Integer>(totalCartas);
+		mano = new ArrayList<Carta>(totalCartas);
 	}
 	
-	public ArrayList<Integer> getMano(){
-		return (ArrayList<Integer>) this.mano;
+	public ArrayList<Carta> getMano(){
+		return (ArrayList<Carta>) this.mano;
 	}
 	
-	public ArrayList<Integer> tomaCarta (Integer carta){
+	public void tomaCarta (Integer carta){
 		this.mano.add(carta);
-		return (ArrayList<Integer>) this.mano;
 	}
 	
-	public ArrayList<Integer> tomaCartas (ArrayList<Integer> cartas){
-		this.mano.addAll(cartas);
-		return (ArrayList<Integer>) this.mano;	
-	}
 	
-	public ArrayList<Integer> tomaCartas (ArrayList<Integer> cartas, int cantidad){
-		if(cantidad == 1){
-			tomaCarta(cartas.get(0));
-		}
-		else{
-			tomaCartas(cartas);
-		}
-		return (ArrayList<Integer>) this.mano;
-	}
-	
-	public ArrayList <Integer> juegaCarta (Integer carta){
+	public void juegaCarta (Integer carta){
 		this.mano.remove(carta);
-		((ArrayList<Integer>)this.mano).trimToSize();
-		return (ArrayList<Integer>) this.mano;
+		((ArrayList<Carta>)this.mano).trimToSize();
 	}
 	
 	public void verMano(){
