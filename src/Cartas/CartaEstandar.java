@@ -7,8 +7,6 @@ package Cartas;
  */
 public class CartaEstandar extends Carta {
 
-	private static final int CANT_ESTANDAR = 10;
-
 	/**
 	 * Método constructor que crea una carta estándar
 	 * 
@@ -23,9 +21,7 @@ public class CartaEstandar extends Carta {
 		if(!validaColor(color)) {
 			throw new IllegalArgumentException("No es un color valido");
 		}
-	}
-
-	
+	}	
 
 	/**
 	 * Método que valida si el número que se pasa por parametro está dentro
@@ -35,8 +31,8 @@ public class CartaEstandar extends Carta {
 	 * @return "true" si el número es válido y "false" si no lo es
 	 */
 	private static boolean validaNumero(String numero) {
-		for(int i = 0; i < CANT_ESTANDAR; i++) {
-			if(VALORES[i] .equals(numero)) {
+		for(String valor : VALORES) {
+			if(valor.equals(numero)) {
 				return true;
 			}
 		}

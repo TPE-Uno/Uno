@@ -1,9 +1,17 @@
 package Cartas;
 
-public class MasCuatro extends CambiaColor {
+/**
+ * 
+ * @author Team - UNO
+ *
+ */
+public class MasCuatro extends CartaEspecial {
 	
-	public MasCuatro(final String valor, final String color) {
-		super(valor, color);
+	/**
+	 * Método constructor que crea la carta +4
+	 */
+	public MasCuatro() {
+		super("+4", "NULL");
 	}
 
 }

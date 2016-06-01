@@ -1,14 +1,22 @@
 package Cartas;
 
+/**
+ * 
+ * @author Team - UNO
+ *
+ */
 public class Saltea extends CartaEspecial {
 
-	public Saltea(final String valor, final String color) {
-		super(valor, color);
-		if(!valor.equalsIgnoreCase("Saltea")) {
-			throw new IllegalArgumentException("Valor no valido");
-		}
+	/**
+	 * Método constructor que cre la carta saltea
+	 * 
+	 * @param color
+	 */
+	public Saltea(final String color) {
+		super("saltea", color);
 		if(!validaColor(color)) {
 			throw new IllegalArgumentException("Color no valido");
 		}
 	}
+
 }

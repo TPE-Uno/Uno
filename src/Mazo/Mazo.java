@@ -37,24 +37,24 @@ public class Mazo {
 			mazo.push(c8);
 			mazo.push(c8);
 		}
-		Carta c9 = new MasDos("+2", "rojo");
-		Carta c10 = new MasDos("+2", "verde");
-		Carta c11 = new MasDos("+2","amarillo");
-		Carta c12 = new MasDos("+2","azul");
+		Carta c9 = new MasDos("rojo");
+		Carta c10 = new MasDos("verde");
+		Carta c11 = new MasDos("amarillo");
+		Carta c12 = new MasDos("azul");
 		for(int i = 0; i < 2; i++) {
 			mazo.push(c9);
 			mazo.push(c10);
 			mazo.push(c11);
 			mazo.push(c12);
 		}
-		Carta c = new MasCuatro("+4","multiColor");
+		Carta c = new MasCuatro();
 		for(int i = 0; i < 4; i++) {
 			mazo.push(c);
 		}
-		Carta c13 = new Saltea("saltea","rojo");
-		Carta c14 = new Saltea("saltea","verde");
-		Carta c15 = new Saltea("saltea","amarillo");
-		Carta c16 = new Saltea("saltea","azul");
+		Carta c13 = new Saltea("rojo");
+		Carta c14 = new Saltea("verde");
+		Carta c15 = new Saltea("amarillo");
+		Carta c16 = new Saltea("azul");
 		for(int i = 0; i < 2; i++) {
 			mazo.push(c13);
 			mazo.push(c14);
@@ -62,16 +62,16 @@ public class Mazo {
 			mazo.push(c16);
 		}
 
-		Carta c17 = new CambiaColor("multiColor","no-color");
+		Carta c17 = new CambiaColor();
 		for(int i = 0; i < 4; i++) {
 			mazo.push(c17);
 
 		}
 
-		Carta c18 = new CambiaSentido("cambiaSentido","rojo");
-		Carta c19 = new CambiaSentido("cambiaSentido","verde");
-		Carta c20 = new CambiaSentido("cambiaSentido","amarillo");
-		Carta c21 = new CambiaSentido("cambiaSentido","azul");
+		Carta c18 = new CambiaSentido("rojo");
+		Carta c19 = new CambiaSentido("verde");
+		Carta c20 = new CambiaSentido("amarillo");
+		Carta c21 = new CambiaSentido("azul");
 		for(int i = 0; i < 2; i++) {
 			mazo.push(c18);
 			mazo.push(c19);
