@@ -47,3 +47,4 @@ public class Mano {
 			System.out.println(this.mano.get(i));
 		}
 	}
+}
