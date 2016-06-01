@@ -1,14 +1,22 @@
 package Cartas;
 
+/**
+ * 
+ * @author Team - UNO
+ *
+ */
 public class CambiaSentido extends CartaEspecial {
 
-	public CambiaSentido(final String valor, final String color) {
-		super(valor, color);
-		if(!valor.equals("cambiaSentido")) {
-			throw new IllegalArgumentException("Valor no valido");
-		}
+	/**
+	 * Método constructor que crea la carta cambia sentido
+	 * 
+	 * @param color
+	 */
+	public CambiaSentido(final String color) {
+		super("cambiaSentido", color);
 		if(!validaColor(color)) {
 			throw new IllegalArgumentException("Color no valido");
 		}
 	}
+
 }

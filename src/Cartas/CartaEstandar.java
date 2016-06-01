@@ -7,6 +7,9 @@ package Cartas;
  */
 public class CartaEstandar extends Carta {
 
+	/**
+	 * Indica la cantidad de cartas estandares
+	 */
 	private static final int CANT_ESTANDAR = 10;
 
 	/**
@@ -23,9 +26,7 @@ public class CartaEstandar extends Carta {
 		if(!validaColor(color)) {
 			throw new IllegalArgumentException("No es un color valido");
 		}
-	}
-
-	
+	}	
 
 	/**
 	 * Método que valida si el número que se pasa por parametro está dentro

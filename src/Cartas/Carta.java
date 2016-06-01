@@ -1,18 +1,45 @@
 package Cartas;
 
+/**
+ * 
+ * @author Team - UNO
+ *
+ */
 public abstract class Carta {
 
-	public static final String[] VALORES = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+2", "+4", "multiColor", "cambiaSentido", "saltea"};
-	public static final String[] COLORES = {"rojo", "amarillo", "azul", "verde", "no-color"};
+	public static final String[] VALORES = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+2", "+4", "cambiaColor", "cambiaSentido", "saltea"};
+	public static final String[] COLORES = {"rojo", "amarillo", "azul", "verde", "NULL"};
 
 	private String valor;
 	private String color;
 	
+	/**
+	 * Método constructor que crea la carta
+	 * 
+	 * @param valor
+	 * @param color
+	 */
 	public Carta(final String valor, final String color) {
 		this.valor = valor;
 		this.color = color;
 	}
-	
+
+	/**
+	 * Método que devuelve el número de la carta
+	 * @return Número de la carta
+	 */
+	public String getValor() {
+		return valor;
+	}
+
+	/**
+	 * Método que devuelve el color de la carta
+	 * @return
+	 */
+	public String getColor() {
+		return color;
+	}
+
 	/**
 	 * Método que valida si el color que se pasa por parametro está dentro
 	 * de los colores permitidos por el juego
@@ -27,21 +54,20 @@ public abstract class Carta {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * Método que devuelve el número de la carta
-	 * @return Número de la carta
+	 * Método que retorna el nombre de la carta
 	 */
-	public String getValor() {
-		return valor;
+	@Override
+	public String toString() {
+		if(!tieneColor()) {
+			return getValor();
+		}
+		return getValor()+" de color "+getColor();
 	}
-	
-	public String getColor() {
-		return color;
-	}
-	
+
 	/**
-	 * Retorna "true" si dos cartas son iguales
+	 * Método que retorna "true" si dos cartas son iguales y "false" si no  lo son
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -62,6 +88,24 @@ public abstract class Carta {
 	}
 
 	/**
+	 * Método que retorna el hashCode de la carta
+	 */
+	@Override
+	public int hashCode() {
+		return getColor().hashCode();
+	}
+
+	/**
+	 * Método que retorna "true" si la carta es de algún color y "false" en caso contrario
+	 */
+	private boolean tieneColor() {
+		if(color.equals("NULL")) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
 	 * Método que compara si dos cartas son del mismo color
 	 * 
 	 * @param color
@@ -70,7 +114,7 @@ public abstract class Carta {
 	private boolean comparaColor(final String color) {
 		return getColor().equals(color);
 	}
-	
+
 	/**
 	 * Método que compara si dos cartas son del mismo número
 	 * 
@@ -83,12 +127,5 @@ public abstract class Carta {
 		}
 		return true;
 	}
-	/**
-	 * Retorna el hashCode de la carta
-	 */
-	@Override
-	public int hashCode() {
-		return getColor().hashCode();
-	}
-	
+
 }
