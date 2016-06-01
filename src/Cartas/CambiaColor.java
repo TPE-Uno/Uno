@@ -1,5 +1,10 @@
 package Cartas;
 
+/**
+ * 
+ * @author Team - UNO
+ *
+ */
 public class CambiaColor extends CartaEspecial {
 
 	public CambiaColor(final String valor, final String color) {
