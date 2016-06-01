@@ -8,11 +8,6 @@ package Cartas;
 public class CartaEstandar extends Carta {
 
 	/**
-	 * Indica la cantidad de cartas estandares
-	 */
-	private static final int CANT_ESTANDAR = 10;
-
-	/**
 	 * Método constructor que crea una carta estándar
 	 * 
 	 * @param numero de la carta
@@ -36,8 +31,8 @@ public class CartaEstandar extends Carta {
 	 * @return "true" si el número es válido y "false" si no lo es
 	 */
 	private static boolean validaNumero(String numero) {
-		for(int i = 0; i < CANT_ESTANDAR; i++) {
-			if(VALORES[i] .equals(numero)) {
+		for(String valor : VALORES) {
+			if(valor.equals(numero)) {
 				return true;
 			}
 		}
