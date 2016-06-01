@@ -1,4 +1,4 @@
-package Cartas;
+package cartas;
 
 import static org.junit.Assert.*;
 

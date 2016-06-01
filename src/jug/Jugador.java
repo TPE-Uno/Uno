@@ -1,4 +1,4 @@
-package Jugador;
+package jug;
 
 public class Jugador {
 

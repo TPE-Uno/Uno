@@ -3,8 +3,8 @@ package Mazo;
 import java.util.Collections;
 import java.util.Stack;
 
-import Cartas.*;
 
+import cartas.*;
 public class Mazo {
 
 	public static final int CANT_ESTANDAR = 10;
