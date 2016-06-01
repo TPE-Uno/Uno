@@ -1,9 +1,9 @@
-package Mazo;
+package mazo;
 
 import java.util.Collections;
 import java.util.Stack;
 
-import Cartas.*;
+import cartas.*;
 
 public class Mazo {
 

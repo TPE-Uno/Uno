@@ -1,7 +1,7 @@
-package Jugador;
+package jugador;
 import java.util.List;
 
-import Cartas.Carta;
+import cartas.Carta;
 
 import java.util.ArrayList;
 
