@@ -1,5 +1,7 @@
 package jugador;
 
+import cartas.Carta;
+
 public class Jugador {
 
 	private String nombre;
@@ -33,7 +35,9 @@ public class Jugador {
 		this.puntaje += puntaje; //setPuntaje(this.puntaje + puntaje); 
 	}
 	
-	
+	public Mano getMano(){
+		return this.mano;
+	}
 
 	public void actualizarUno() {
 		this.uno = false; 
