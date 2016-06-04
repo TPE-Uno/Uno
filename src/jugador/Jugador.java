@@ -33,7 +33,6 @@ public class Jugador {
 		this.puntaje += puntaje; //setPuntaje(this.puntaje + puntaje); 
 	}
 	
-	
 
 	public void actualizarUno() {
 		this.uno = false; 
