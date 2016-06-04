@@ -7,8 +7,15 @@ package cartas;
  */
 public class CambiaSentido extends CartaEspecial {
 
+	private String cambiaColor;
+	public String getCambiaColor() {
+		return cambiaColor;
+	}
+	public void setCambiaColor(String cambiaColor) {
+		this.cambiaColor = cambiaColor;
+	}
 	/**
-	 * Método constructor que crea la carta cambia sentido
+	 * Mï¿½todo constructor que crea la carta cambia sentido
 	 * 
 	 * @param color
 	 */
