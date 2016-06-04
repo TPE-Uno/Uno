@@ -1,7 +1,5 @@
 package jugador;
 
-import cartas.Carta;
-
 public class Jugador {
 
 	private String nombre;

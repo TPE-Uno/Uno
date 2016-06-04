@@ -7,11 +7,20 @@ package cartas;
  */
 public class CambiaColor extends CartaEspecial {
 
+		private String colorElegido;
 	/**
-	 * Método constructor que crea una carta Cambia color
+	 * Mï¿½todo constructor que crea una carta Cambia color
 	 */
 	public CambiaColor() {
 		super("cambiaColor", "NULL");
+	}
+
+	public String getColorElegido() {
+		return colorElegido;
+	}
+
+	public void setColorElegido(String colorElegido) {
+		this.colorElegido = colorElegido;
 	}
 
 }
