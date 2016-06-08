@@ -32,10 +32,7 @@ public class Main {
 		mazo.mezclar();
 		c = mazo.pop();
 		pozo.push(c);
-		color = c.getColor();
-		
-	}
-	
-	
+		color = c.getColor();	
+	}	
 }
 

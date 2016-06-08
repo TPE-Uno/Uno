@@ -18,5 +18,4 @@ public class Saltea extends CartaEspecial {
 			throw new IllegalArgumentException("Color no valido");
 		}
 	}
-
 }

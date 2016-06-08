@@ -38,5 +38,4 @@ public class CartaEstandar extends Carta {
 		}
 		return false;
 	}
-
 }

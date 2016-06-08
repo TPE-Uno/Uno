@@ -25,5 +25,4 @@ public class CambiaSentido extends CartaEspecial {
 			throw new IllegalArgumentException("Color no valido");
 		}
 	}
-
 }

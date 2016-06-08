@@ -1,6 +1,5 @@
 package juego;
 
-
 import java.util.List;
 import java.util.ListIterator;
 
@@ -29,6 +28,4 @@ public class Juego {
 	public void setActual(Jugador actual) {
 		this.actual = actual;
 	}
-	
-	
 }

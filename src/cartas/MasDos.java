@@ -18,5 +18,4 @@ public class MasDos extends CartaEspecial {
 			throw new IllegalArgumentException("Color no valido");
 		}
 	}
-
 }

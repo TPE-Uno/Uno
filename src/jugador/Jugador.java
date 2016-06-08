@@ -86,8 +86,4 @@ public class Jugador {
 	public String toString() {
 		return "Jugador: " + this.nombre + "\nPuntaje: " + this.puntaje;
 	}
-	
-	
-		
 }
-

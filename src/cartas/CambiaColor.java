@@ -22,5 +22,4 @@ public class CambiaColor extends CartaEspecial {
 	public void setColorElegido(String colorElegido) {
 		this.colorElegido = colorElegido;
 	}
-
 }

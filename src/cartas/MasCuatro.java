@@ -13,5 +13,4 @@ public class MasCuatro extends CartaEspecial {
 	public MasCuatro() {
 		super("+4", "NULL");
 	}
-
 }
