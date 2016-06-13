@@ -1,7 +1,13 @@
 package jugador;
 
-public class Jugador {
+import cartas.Carta;
 
+public class Jugador implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private int puntaje;
 	private Mano mano; 
@@ -45,6 +51,14 @@ public class Jugador {
 		this.uno = true; 
 	}
 	
+	public boolean getUno() {
+		return this.uno;
+	}
+	
+	public void setUno(boolean active) {
+		this.uno = active;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,5 +99,13 @@ public class Jugador {
 	@Override
 	public String toString() {
 		return "Jugador: " + this.nombre + "\nPuntaje: " + this.puntaje;
+	}
+	
+	public void recibirCarta(Carta carta) {
+		mano.tomaCarta(carta);
+	}
+	
+	public void vaciarMano() {
+		getMano().limpia();
 	}
 }
