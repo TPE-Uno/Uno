@@ -8,7 +8,12 @@ package cartas;
 public class CartaEstandar extends Carta {
 
 	/**
-	 * Método constructor que crea una carta estándar
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * MÃ©todo constructor que crea una carta estÃ¡ndar
 	 * 
 	 * @param numero de la carta
 	 * @param color de la carta
@@ -24,11 +29,11 @@ public class CartaEstandar extends Carta {
 	}	
 
 	/**
-	 * Método que valida si el número que se pasa por parametro está dentro
-	 * de los números permitidos por el juego
+	 * MÃ©todo que valida si el nÃºmero que se pasa por parametro estÃ¡ dentro
+	 * de los nÃºmeros permitidos por el juego
 	 *
 	 * @param numero
-	 * @return "true" si el número es válido y "false" si no lo es
+	 * @return "true" si el nÃºmero es vÃ¡lido y "false" si no lo es
 	 */
 	private static boolean validaNumero(String numero) {
 		for(String valor : VALORES) {
