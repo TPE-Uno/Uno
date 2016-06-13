@@ -7,6 +7,10 @@ package cartas;
  */
 public class CambiaSentido extends CartaEspecial {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String cambiaColor;
 	public String getCambiaColor() {
 		return cambiaColor;
