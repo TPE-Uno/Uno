@@ -5,8 +5,12 @@ package cartas;
  * @author Team - UNO
  *
  */
-public abstract class Carta {
+public abstract class Carta implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final String[] VALORES = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	public static final String[] COLORES = {"rojo", "amarillo", "azul", "verde", "NULL"};
 
@@ -14,7 +18,7 @@ public abstract class Carta {
 	private String color;
 	
 	/**
-	 * Método constructor que crea la carta
+	 * MÃ©todo constructor que crea la carta
 	 * 
 	 * @param valor
 	 * @param color
@@ -25,26 +29,68 @@ public abstract class Carta {
 	}
 
 	/**
-	 * Método que devuelve el número de la carta
-	 * @return Número de la carta
+	 * MÃ©todo que devuelve el nÃºmero de la carta
+	 * @return NÃºmero de la carta
 	 */
 	public String getValor() {
 		return valor;
 	}
 
 	/**
-	 * Método que devuelve el color de la carta
+	 * MÃ©todo que devuelve el color de la carta
 	 * @return
 	 */
 	public String getColor() {
 		return color;
 	}
+	
+	public boolean esCambiaColor() {
+		if(this.getClass().equals(CambiaColor.class)) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean esMasCuatro() {
+		if(this.getClass().equals(MasCuatro.class)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean esMasDos() {
+		if(this.getClass().equals(MasDos.class)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean esCambiaSentido() {
+		if(this.getClass().equals(CambiaSentido.class)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean esSaltea() {
+		if(this.getClass().equals(Saltea.class)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean esEspecial() {
+		if(this instanceof CartaEspecial) {
+			return true;
+		}
+		return false;
+	}
 
 	/**
-	 * Método que valida si el color que se pasa por parametro está dentro
+	 * MÃ©todo que valida si el color que se pasa por parametro estÃ¡ dentro
 	 * de los colores permitidos por el juego
 	 * @param color
-	 * @return "true" si el color es válido y "false" si no lo es
+	 * @return "true" si el color es vÃ¡lido y "false" si no lo es
 	 */
 	public static boolean validaColor(String color) {
 		for(String cl : COLORES) {
@@ -56,7 +102,7 @@ public abstract class Carta {
 	}
 
 	/**
-	 * Método que retorna el nombre de la carta
+	 * MÃ©todo que retorna el nombre de la carta
 	 */
 	@Override
 	public String toString() {
@@ -67,7 +113,7 @@ public abstract class Carta {
 	}
 
 	/**
-	 * Método que retorna "true" si dos cartas son iguales y "false" si no  lo son
+	 * MÃ©todo que retorna "true" si dos cartas son iguales y "false" si no  lo son
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -80,7 +126,7 @@ public abstract class Carta {
 		if(getClass() != o.getClass()) {
 			return false;
 		}
-		CartaEstandar other = (CartaEstandar) o;
+		Carta other = (Carta) o;
 		if(!(this.comparaColor(other.getColor()) && this.comparaValor(other.getValor()))) {
 			return false;
 		}
@@ -88,7 +134,7 @@ public abstract class Carta {
 	}
 
 	/**
-	 * Método que retorna el hashCode de la carta
+	 * MÃ©todo que retorna el hashCode de la carta
 	 */
 	@Override
 	public int hashCode() {
@@ -96,7 +142,7 @@ public abstract class Carta {
 	}
 
 	/**
-	 * Método que retorna "true" si la carta es de algún color y "false" en caso contrario
+	 * MÃ©todo que retorna "true" si la carta es de algÃºn color y "false" en caso contrario
 	 */
 	private boolean tieneColor() {
 		if(color.equals("NULL")) {
@@ -106,7 +152,7 @@ public abstract class Carta {
 	}
 
 	/**
-	 * Método que compara si dos cartas son del mismo color
+	 * MÃ©todo que compara si dos cartas son del mismo color
 	 * 
 	 * @param color
 	 * @return "true" si las cartas son del mismo color y "false" si no lo son
@@ -116,10 +162,10 @@ public abstract class Carta {
 	}
 
 	/**
-	 * Método que compara si dos cartas son del mismo número
+	 * MÃ©todo que compara si dos cartas son del mismo nÃºmero
 	 * 
 	 * @param numero
-	 * @return "true" si las cartas son del mismo número y "false" si no lo son
+	 * @return "true" si las cartas son del mismo nÃºmero y "false" si no lo son
 	 */
 	private boolean comparaValor(final String valor) {
 		if(!getValor().equals(valor)) {
