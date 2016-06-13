@@ -8,7 +8,12 @@ package cartas;
 public class MasDos extends CartaEspecial {
 
 	/**
-	 * Método constructor que crea la carta +2
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * MÃ©todo constructor que crea la carta +2
 	 * 
 	 * @param color
 	 */
