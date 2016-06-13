@@ -8,7 +8,12 @@ package cartas;
 public class Saltea extends CartaEspecial {
 
 	/**
-	 * Método constructor que cre la carta saltea
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * MÃ©todo constructor que cre la carta saltea
 	 * 
 	 * @param color
 	 */
