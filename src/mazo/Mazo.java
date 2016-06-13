@@ -2,18 +2,21 @@ package mazo;
 
 import java.util.Collections;
 import java.util.Stack;
-
 import cartas.*;
 
-public class Mazo {
+public class Mazo implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final int CANT_ESTANDAR = 10;
-
 	private Stack<Carta> mazo;
 
 	public Mazo() {
 		mazo = new Stack<Carta>();
 	}
+	
 	public void llenarMazo() {
 		Carta c1 = new CartaEstandar ("0", "rojo");
 		Carta c2 = new CartaEstandar ("0", "verde");
@@ -61,13 +64,10 @@ public class Mazo {
 			mazo.push(c15);
 			mazo.push(c16);
 		}
-
 		Carta c17 = new CambiaColor();
 		for(int i = 0; i < 4; i++) {
 			mazo.push(c17);
-
 		}
-
 		Carta c18 = new CambiaSentido("rojo");
 		Carta c19 = new CambiaSentido("verde");
 		Carta c20 = new CambiaSentido("amarillo");
@@ -78,16 +78,20 @@ public class Mazo {
 			mazo.push(c20);
 			mazo.push(c21);
 		}
-	}	
+	}
+
 	public void mezclar() {
 		Collections.shuffle(mazo);
 	}
+	
 	public boolean isEmpty() {
 		return mazo.empty();
 	}
+	
 	public Carta pop() {
 		return mazo.pop();
 	}
+	
 	public Carta push(Carta c) {
 		return mazo.push(c);
 	}
