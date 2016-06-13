@@ -8,7 +8,12 @@ package cartas;
 public abstract class CartaEspecial extends Carta {
 	
 	/**
-	 * Método constructor que crea la carta especial
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * MÃ©todo constructor que crea la carta especial
 	 * 
 	 * @param valor
 	 * @param color
