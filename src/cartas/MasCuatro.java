@@ -5,42 +5,27 @@ package cartas;
  * @author Team - UNO
  *
  */
-public class CartaEstandar extends Carta {
-
+public class MasCuatro extends CartaEspecial {
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private String colorElegido;
+	
 	/**
-	 * Método constructor que crea una carta estándar
-	 * 
-	 * @param numero de la carta
-	 * @param color de la carta
+	 * Método constructor que crea la carta +4
 	 */
-	public CartaEstandar(final  String numero, final String color) {
-		super(numero, color);
-		if(!validaNumero(numero)) {
-			throw new IllegalArgumentException("No es un numero valido");
-		}
-		if(!validaColor(color)) {
-			throw new IllegalArgumentException("No es un color valido");
-		}
-	}	
+	public MasCuatro() {
+		super("+4", "NULL");
+		this.colorElegido= "";
+	}
+	
+	public String getColorElegido() {
+		return colorElegido;
+	}
 
-	/**
-	 * Método que valida si el número que se pasa por parametro está dentro
-	 * de los números permitidos por el juego
-	 *
-	 * @param numero
-	 * @return "true" si el número es válido y "false" si no lo es
-	 */
-	private static boolean validaNumero(String numero) {
-		for(String valor : VALORES) {
-			if(valor.equals(numero)) {
-				return true;
-			}
-		}
-		return false;
+	public void setColorElegido(String colorElegido) {
+		this.colorElegido = colorElegido;
 	}
 }
