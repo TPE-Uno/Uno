@@ -3,6 +3,7 @@ package cartas;
 public abstract class Carta implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
 	public static final String[] VALORES = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	public static final String[] COLORES = {"rojo", "amarillo", "azul", "verde", "NULL"};
 
@@ -30,7 +31,7 @@ public abstract class Carta implements java.io.Serializable {
 	/**
 	 * Verifica si una carta es CambiaColor
 	 * @return true si es la carta
-     */
+	 */
 	public boolean esCambiaColor() {
 		if(this.getClass().equals(CambiaColor.class)) {
 			return true;
