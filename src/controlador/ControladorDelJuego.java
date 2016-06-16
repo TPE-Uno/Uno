@@ -46,7 +46,7 @@ public class ControladorDelJuego implements java.io.Serializable {
 	 * Retorna el index del siguiente jugador
 	 * @param index index del jugador actual
 	 * @return index del siguiente jugador
-     	*/
+	 */
 	public int indexSiguiente(int index) {
 		return juego.getJugadores().indexSiguiente(index);
 	}
