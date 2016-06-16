@@ -10,10 +10,8 @@ import vista.JuegoFrame;
 
 public class ControladorDelJuego implements java.io.Serializable {
 
-/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private Integer cantJugadores;
 	private List<String> nombres;
 	private Juego juego;
@@ -44,6 +42,11 @@ public class ControladorDelJuego implements java.io.Serializable {
 		return false;
 	}
 	
+	/**
+	 * Retorna el index del siguiente jugador
+	 * @param index index del jugador actual
+	 * @return index del siguiente jugador
+     	*/
 	public int indexSiguiente(int index) {
 		return juego.getJugadores().indexSiguiente(index);
 	}
@@ -64,6 +67,11 @@ public class ControladorDelJuego implements java.io.Serializable {
 		juego.getActual().getMano().juegaCarta(getCartaIndex(index));
 	}
 	
+	/**
+	 * Retorna el valor de la carta del jugador actual
+	 * @param index index del jugador actual
+	 * @return valor de la carta
+	 */
 	public String valorCartaJActualIndex(int index) {
 		return getJugadorActual().getMano().getMano().get(index).getValor();
 	}
@@ -72,6 +80,11 @@ public class ControladorDelJuego implements java.io.Serializable {
 		return juego.getMazo().pop();
 	}
 	
+	/**
+	 * Retorna el color de la carta del jugador actual
+	 * @param index index del jugador actual
+	 * @return color de la carta
+	 */
 	public String colorCartaJActualIndex(int index) {
 		return getJugadorActual().getMano().getMano().get(index).getColor();
 	}
@@ -126,7 +139,7 @@ public class ControladorDelJuego implements java.io.Serializable {
 	}
 	
 	public void darCartaAJugador() {
-		juego.darCartaAJugador();
+		juego.darCartaAJugador(juego.getActual());
 	}
 	
 	public int getJugadorIndexPuntaje(int index) {
@@ -145,12 +158,31 @@ public class ControladorDelJuego implements java.io.Serializable {
 		return juego.getJugadores().get(index);
 	}
 
+	public boolean faltanCartas() {
+		return juego.getFaltanCartas();
+	}
+	
 	public int indexActual() {
 		return juego.getIndexActual();
 	}
 
+	/**
+	 * Verifica si el jugador actual tiene solo dos cartas en la mano
+	 * @return true si tiene dos cartas
+	 */
 	public boolean tieneDosCartas() {
 		if(juego.getActual().getMano().getMano().size() == 2) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Verifica si el jugador actual tiene una carta en la mano
+	 * @return true si tiene una carta
+	 */
+	public boolean tieneUnaCarta() {
+		if(juego.getActual().getMano().getMano().size() == 1) {
 			return true;
 		}
 		return false;
