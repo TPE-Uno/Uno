@@ -4,15 +4,17 @@ import cartas.Carta;
 
 public class Jugador implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private String nombre;
 	private int puntaje;
 	private Mano mano; 
 	private boolean uno = false; 
 	
+	/**
+	 * Constructor de la clase Jugador. Inicializa el puntaje en 0 y crea la mano
+	 * @param nombre nombre del jugador
+	 */
 	public Jugador (String nombre) {
 		this.nombre = nombre;
 		this.puntaje = 0;
@@ -36,7 +38,7 @@ public class Jugador implements java.io.Serializable {
 	}
 	
 	public void incrementarPuntaje(int puntaje) {
-		this.puntaje += puntaje; //setPuntaje(this.puntaje + puntaje); 
+		this.puntaje += puntaje;
 	}
 	
 	public Mano getMano(){
@@ -59,6 +61,9 @@ public class Jugador implements java.io.Serializable {
 		this.uno = active;
 	}
 	
+	/**
+	 * Los jugadores son comparados por su mano, su nombre, su puntaje y su "uno"
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
