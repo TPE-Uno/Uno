@@ -1,15 +1,7 @@
 package cartas;
 
-/**
- * 
- * @author Team - UNO
- *
- */
 public class CambiaSentido extends CartaEspecial {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private String cambiaColor;
 	public String getCambiaColor() {
@@ -18,10 +10,10 @@ public class CambiaSentido extends CartaEspecial {
 	public void setCambiaColor(String cambiaColor) {
 		this.cambiaColor = cambiaColor;
 	}
+	
 	/**
-	 * M�todo constructor que crea la carta cambia sentido
-	 * 
-	 * @param color
+	 * Constructor de la clase CambiaSentido
+	 * @param color color de la carta
 	 */
 	public CambiaSentido(final String color) {
 		super("cambiaSentido", color);
