@@ -1,21 +1,12 @@
 package cartas;
 
-/**
- * 
- * @author Team - UNO
- *
- */
 public class MasDos extends CartaEspecial {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Método constructor que crea la carta +2
-	 * 
-	 * @param color
+	 * Constructor de la clase MasDos
+	 * @param color color de la carta
 	 */
 	public MasDos(final String color) {
 		super("+2", color);
