@@ -1,15 +1,7 @@
 package cartas;
 
-/**
- * 
- * @author Team - UNO
- *
- */
 public abstract class Carta implements java.io.Serializable {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	public static final String[] VALORES = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	public static final String[] COLORES = {"rojo", "amarillo", "azul", "verde", "NULL"};
@@ -18,32 +10,27 @@ public abstract class Carta implements java.io.Serializable {
 	private String color;
 	
 	/**
-	 * Método constructor que crea la carta
-	 * 
-	 * @param valor
-	 * @param color
+	 * Constructor de la clase Carta
+	 * @param valor valor de la carta
+	 * @param color color de la carta
 	 */
 	public Carta(final String valor, final String color) {
 		this.valor = valor;
 		this.color = color;
 	}
-
-	/**
-	 * Método que devuelve el número de la carta
-	 * @return Número de la carta
-	 */
+	
 	public String getValor() {
 		return valor;
 	}
-
-	/**
-	 * Método que devuelve el color de la carta
-	 * @return
-	 */
+	
 	public String getColor() {
 		return color;
 	}
 	
+	/**
+	 * Verifica si una carta es CambiaColor
+	 * @return true si es la carta
+     */
 	public boolean esCambiaColor() {
 		if(this.getClass().equals(CambiaColor.class)) {
 			return true;
@@ -51,6 +38,10 @@ public abstract class Carta implements java.io.Serializable {
 		return false;
 	}
 
+	/**
+	 * Verifica si una carta es MasCuatro
+	 * @return true si es la carta
+	 */
 	public boolean esMasCuatro() {
 		if(this.getClass().equals(MasCuatro.class)) {
 			return true;
@@ -58,6 +49,10 @@ public abstract class Carta implements java.io.Serializable {
 		return false;
 	}
 	
+	/**
+	 * Verifica si una carta es MasDos
+	 * @return true si es la carta
+	 */
 	public boolean esMasDos() {
 		if(this.getClass().equals(MasDos.class)) {
 			return true;
@@ -65,6 +60,10 @@ public abstract class Carta implements java.io.Serializable {
 		return false;
 	}
 	
+	/**
+	 * Verifica si una carta es CambiaSentido
+	 * @return true si es la carta
+	 */
 	public boolean esCambiaSentido() {
 		if(this.getClass().equals(CambiaSentido.class)) {
 			return true;
@@ -72,6 +71,10 @@ public abstract class Carta implements java.io.Serializable {
 		return false;
 	}
 	
+	/**
+	 * Verifica si una carta es Saltea
+	 * @return true si es la carta
+	 */
 	public boolean esSaltea() {
 		if(this.getClass().equals(Saltea.class)) {
 			return true;
@@ -79,6 +82,10 @@ public abstract class Carta implements java.io.Serializable {
 		return false;
 	}
 	
+	/**
+	 * Verifica si una carta es CartaEspecial
+	 * @return true si es la carta
+	 */
 	public boolean esEspecial() {
 		if(this instanceof CartaEspecial) {
 			return true;
@@ -87,10 +94,10 @@ public abstract class Carta implements java.io.Serializable {
 	}
 
 	/**
-	 * Método que valida si el color que se pasa por parametro está dentro
+	 * Valida si el color que se pasa por parametro esta dentro
 	 * de los colores permitidos por el juego
-	 * @param color
-	 * @return "true" si el color es válido y "false" si no lo es
+	 * @param color color de la carta
+	 * @return true si el color es valido
 	 */
 	public static boolean validaColor(String color) {
 		for(String cl : COLORES) {
@@ -100,10 +107,7 @@ public abstract class Carta implements java.io.Serializable {
 		}
 		return false;
 	}
-
-	/**
-	 * Método que retorna el nombre de la carta
-	 */
+	
 	@Override
 	public String toString() {
 		if(!tieneColor()) {
@@ -113,7 +117,7 @@ public abstract class Carta implements java.io.Serializable {
 	}
 
 	/**
-	 * Método que retorna "true" si dos cartas son iguales y "false" si no  lo son
+	 * Las cartas son comparadas por su color y su valor
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -132,17 +136,14 @@ public abstract class Carta implements java.io.Serializable {
 		}
 		return true;
 	}
-
-	/**
-	 * Método que retorna el hashCode de la carta
-	 */
+	
 	@Override
 	public int hashCode() {
 		return getColor().hashCode();
 	}
 
 	/**
-	 * Método que retorna "true" si la carta es de algún color y "false" en caso contrario
+	 * Retorna true si la carta es de algun color
 	 */
 	private boolean tieneColor() {
 		if(color.equals("NULL")) {
@@ -152,20 +153,18 @@ public abstract class Carta implements java.io.Serializable {
 	}
 
 	/**
-	 * Método que compara si dos cartas son del mismo color
-	 * 
-	 * @param color
-	 * @return "true" si las cartas son del mismo color y "false" si no lo son
+	 * Compara si dos cartas son del mismo color
+	 * @param color color de la carta
+	 * @return true si las cartas son del mismo color
 	 */
 	private boolean comparaColor(final String color) {
 		return getColor().equals(color);
 	}
 
 	/**
-	 * Método que compara si dos cartas son del mismo número
-	 * 
-	 * @param numero
-	 * @return "true" si las cartas son del mismo número y "false" si no lo son
+	 * Compara si dos cartas son del mismo numero
+	 * @param valor valor de la carta
+	 * @return true si las cartas son del mismo numero
 	 */
 	private boolean comparaValor(final String valor) {
 		if(!getValor().equals(valor)) {
