@@ -6,15 +6,15 @@ import java.util.List;
 import cartas.Carta;
 
 public class Mano implements java.io.Serializable {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
+	
 	private List <Carta> mano;
 	public static final int totalCartas = 7;
 	
-	
+	/**
+	 * Constructor de la clase Mano. Crea un ArrayList de cartas
+	 */
 	public Mano () {
 		mano = new ArrayList<Carta>(totalCartas);
 	}
@@ -32,6 +32,9 @@ public class Mano implements java.io.Serializable {
 		((ArrayList<Carta>)this.mano).trimToSize();
 	}
 	
+	/**
+	 * Muestra las cartas de la mano
+	 */
 	public void verMano() {
 		for(int i = 0; i<this.mano.size(); i++){
 			System.out.println(this.mano.get(i));
