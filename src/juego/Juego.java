@@ -8,11 +8,9 @@ import jugador.Jugador;
 import mazo.Mazo;
 
 public class Juego implements java.io.Serializable {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
+	
 	private Jugador actual;
 	private Mazo mazo;
 	private Mazo pozo;
@@ -22,8 +20,27 @@ public class Juego implements java.io.Serializable {
 	private int indexActual;
 	private int primerIndex;
 	private  boolean estadoPartida;
+	private boolean faltanCartas;
 	
+	/**
+	 * Constructor de la clase Juego. Crea el mazo y el pozo
+	 * @param ronda ronda de jugadores
+	 * @param primerIndex index del primer jugador
+	 */
 	public Juego(Ronda ronda, int primerIndex) {
+		if(ronda.size() == 2 && (primerIndex < 0 || primerIndex > 1)) {
+			throw new IllegalArgumentException();
+		}
+		else if(ronda.size() == 3 && (primerIndex < 0 || primerIndex > 2)) {
+			throw new IllegalArgumentException();
+		}
+		else if(ronda.size() == 4 && (primerIndex < 0 || primerIndex > 3)) {
+			throw new IllegalArgumentException();
+		}
+		else if(ronda.size() < 2 || ronda.size() > 4) {
+			throw new IllegalArgumentException();
+		}
+		this.faltanCartas = false;
 		this.estadoPartida = false;
 		this.mazo = new Mazo();
 		this.pozo = new Mazo();
@@ -38,25 +55,26 @@ public class Juego implements java.io.Serializable {
 		mazo.mezclar();
 		repartirCartas();
 		cartaPozo = mazo.pop();
-		while(cartaPozo.esCambiaColor() || cartaPozo.esMasCuatro()) {
+		while(cartaPozo.esCambiaColor() || cartaPozo.esMasCuatro() || cartaPozo.esMasDos()) {
 			pozo.push(cartaPozo);
 			cartaPozo = mazo.pop();
 		}
 		pozo.push(cartaPozo);
-		if(cartaPozo.esMasCuatro()) {
-			getActual().getMano().tomaCarta(mazo.pop());
-			getActual().getMano().tomaCarta(mazo.pop());
-			getActual().getMano().tomaCarta(mazo.pop());
-			getActual().getMano().tomaCarta(mazo.pop());
-		} else if(cartaPozo.esMasDos()) {
-			getActual().getMano().tomaCarta(mazo.pop());
-			getActual().getMano().tomaCarta(mazo.pop());
-		} else if(cartaPozo.esCambiaSentido()) {
+		if(cartaPozo.esCambiaSentido()) {
 			cambiarSentido();
 		}
 	}
 
+	/**
+	 * Constructor de la clase Juego. Crea el mazo, el pozo y la ronda de jugadores
+	 * @param cantJugadores cantidad de jugadores
+	 * @param nombres nombres de los jugadores
+	 */
 	public Juego(Integer cantJugadores, List<String> nombres) {
+		if(cantJugadores < 2 || cantJugadores > 4 || nombres.size() < 2 || nombres.size() > 2) {
+			throw new IllegalArgumentException();
+		}
+		this.faltanCartas = false;
 		this.estadoPartida = false;
 		this.mazo = new Mazo();
 		this.pozo = new Mazo();
@@ -69,28 +87,23 @@ public class Juego implements java.io.Serializable {
 		mazo.mezclar();
 		repartirCartas();
 		cartaPozo = mazo.pop();
-		while(cartaPozo.esCambiaColor() || cartaPozo.esMasCuatro()) {
+		while(cartaPozo.esCambiaColor() || cartaPozo.esMasCuatro() || cartaPozo.esMasDos()) {
 			pozo.push(cartaPozo);
 			cartaPozo = mazo.pop();
 		}
 		pozo.push(cartaPozo);
-		if(cartaPozo.esMasCuatro()) {
-			getActual().getMano().tomaCarta(mazo.pop());
-			getActual().getMano().tomaCarta(mazo.pop());
-			getActual().getMano().tomaCarta(mazo.pop());
-			getActual().getMano().tomaCarta(mazo.pop());
-		} else if(cartaPozo.esMasDos()) {
-			getActual().getMano().tomaCarta(mazo.pop());
-			getActual().getMano().tomaCarta(mazo.pop());
-		} else if(cartaPozo.esCambiaSentido()) {
+		if(cartaPozo.esCambiaSentido()) {
 			cambiarSentido();
 		}
 	}
 	
+	/**
+	 * Metodo que reparte las primeras 7 cartas a los jugadores
+	 */
 	private void repartirCartas() {
 		for(Jugador j : l) {
 			for(int i = 0; i < 7; i++) {
-				j.recibirCarta(mazo.pop());
+				j.recibirCarta(getMazo().pop());
 			}			
 		}
 	}
@@ -116,13 +129,32 @@ public class Juego implements java.io.Serializable {
 	}
 	
 	public void turnoSiguiente() {
-		indexActual = l.indexSiguiente();
-		l.setIndexActual(l.indexSiguiente());
-		setActual(l.get(indexActual));
+		indexActual = getJugadores().indexSiguiente();
+		l.setIndexActual(getJugadores().indexSiguiente());
+		setActual(getJugadores().get(indexActual));
 	}
 	
-	public void darCartaAJugador() {
-		getActual().getMano().tomaCarta(mazo.pop());
+	public void darCartaAJugador(Jugador j) {
+		if(!validaHayCartasEnMazo(getMazo()) && getPozo().tamanoMazo() == 1) {
+			this.faltanCartas = true;
+			return;
+		}
+		if(!validaHayCartasEnMazo(getMazo())){
+			Carta carta = getPozo().pop();
+			getPozo().mezclar();
+			setMazo(getPozo());
+			Mazo nuevoPozo = new Mazo();
+			setPozo(nuevoPozo);
+			getPozo().push(carta);
+		}
+		j.recibirCarta(getMazo().pop());
+	}
+	
+	public boolean validaHayCartasEnMazo(Mazo mazo){
+		if(mazo.isEmpty()){
+			return false;
+		}
+		return true;
 	}
 	
 	public Integer getCantJugadores() {
@@ -145,6 +177,9 @@ public class Juego implements java.io.Serializable {
 		this.actual = actual;
 	}
 	
+	/**
+	 * Suma el puntaje a los jugadores
+	 */
 	public void puntaje() {
 		int index = getJugadores().indexSiguiente();
 		Jugador j = getJugadores().get(index);
@@ -166,6 +201,12 @@ public class Juego implements java.io.Serializable {
 		}		
 	}
 	
+	/**
+	 * Valida el color de la carta a tirar
+	 * @param delPozo ultima carta del pozo
+	 * @param aTirar carta a tirar
+	 * @return true si el color de la carta a tirar coincide con el de la carta del pozo
+	 */
 	private boolean validaColor(Carta delPozo, Carta aTirar) {
 		if(delPozo.getColor().equals(aTirar.getColor()) || aTirar.getColor().equals("NULL") || validaColorEspecial(delPozo, aTirar)) {
 			return true;
@@ -173,6 +214,12 @@ public class Juego implements java.io.Serializable {
 		return false;
 	}
 	
+	/**
+	 * Valida el color de la carta a tirar
+	 * @param delPozo ultima carta del pozo
+	 * @param aTirar carta a tirar
+	 * @return true si el color de la carta a tirar coincide con el elegido en el turno anterior
+	 */
 	private boolean validaColorEspecial(Carta delPozo, Carta aTirar) {
 		if(delPozo.esCambiaColor()) {
 			if(((CambiaColor)delPozo).getColorElegido().equals(aTirar.getColor()) || ((CambiaColor)delPozo).getColorElegido().equals("")) {
@@ -186,12 +233,26 @@ public class Juego implements java.io.Serializable {
 		return false;
 	}
 	
+	/**
+	 * Valida el valor de la carta a tirar
+	 * @param delPozo ultima carta del pozo
+	 * @param aTirar carta a tirar
+	 * @return true si el valor de la carta a tirar coincide con el de la carta del pozo
+	 */
 	private boolean validaValor (Carta delPozo, Carta aTirar) {
 		if(delPozo.getValor().equals(aTirar.getValor()))
 			return true;
 		return false;
 	}
 	
+	/**
+	 * Metodo para jugar una carta. Si es la ultima carta de la mano, se termina la partida
+	 * Si le quedaban dos cartas al jugador y no "dijo" uno, se le llena la mano
+	 * Si el jugador tira una carta no valida, el mismo recibe dos cartas
+	 * @param delPozo ultima carta del pozo
+	 * @param aTirar carta a tirar
+	 * @param indexCarta index de la carta
+	 */
 	public void jugarCarta(Carta delPozo, Carta aTirar, int indexCarta) {
 		if(validaJugada(delPozo, aTirar)) {
 			if(getActual().getMano().getMano().size() == 1) {
@@ -199,27 +260,27 @@ public class Juego implements java.io.Serializable {
 				return;
 			}
 			if((getActual().getMano().getMano().size() == 2 && getActual().getUno()) || getActual().getMano().getMano().size() > 2) {
-				pozo.push(aTirar);
+				getPozo().push(aTirar);
 				setCartaPozo(aTirar);
-				l.get(indexActual).getMano().juegaCarta(getCartaIndex(indexCarta));
+				getJugadores().get(getIndexActual()).getMano().juegaCarta(getCartaIndex(indexCarta));
 				getActual().setUno(false);
 				if(aTirar.esEspecial()) {
 					aplicaPoder(aTirar);
 				}
 			} else if(getActual().getMano().getMano().size() == 2 && !getActual().getUno()) {
-				getActual().getMano().tomaCarta(mazo.pop());
-				getActual().getMano().tomaCarta(mazo.pop());
-				getActual().getMano().tomaCarta(mazo.pop());
-				getActual().getMano().tomaCarta(mazo.pop());
-				getActual().getMano().tomaCarta(mazo.pop());
-				getActual().getMano().tomaCarta(mazo.pop());
+				darCartaAJugador(getActual());
+				darCartaAJugador(getActual());
+				darCartaAJugador(getActual());
+				darCartaAJugador(getActual());
+				darCartaAJugador(getActual());
+				darCartaAJugador(getActual());				
 			}
 		} else {
 			if(getActual().getUno()) {
 				getActual().setUno(false);
 			}
-			getActual().getMano().tomaCarta(mazo.pop());
-			getActual().getMano().tomaCarta(mazo.pop());
+			darCartaAJugador(getActual());
+			darCartaAJugador(getActual());
 		}		
 	}
 	
@@ -228,31 +289,35 @@ public class Juego implements java.io.Serializable {
 	}
 	
 	private Carta getCartaIndex(int index) {
-		return l.get(indexActual).getMano().getMano().get(index);
+		return getJugadores().get(getIndexActual()).getMano().getMano().get(index);
 	}
 	
 	public boolean getEstadoPartida() {
 		return this.estadoPartida;
 	}
 	
+	/**
+	 * Metodo que aplica el poder o habilidad de la carta especial dada
+	 * @param carta carta a tirar
+	 */
 	private void aplicaPoder(Carta carta) {
 		if(carta.esMasDos()) {
-			Jugador j = l.get(l.indexSiguiente());
-			j.recibirCarta(mazo.pop());
-			j.recibirCarta(mazo.pop());
+			Jugador j = getJugadores().get(getJugadores().indexSiguiente());
+			darCartaAJugador(j);
+			darCartaAJugador(j);
 			turnoSiguiente();
 		} else if(carta.esMasCuatro()) {
-			Jugador j = l.get(l.indexSiguiente());
-			j.recibirCarta(mazo.pop());
-			j.recibirCarta(mazo.pop());
-			j.recibirCarta(mazo.pop());
-			j.recibirCarta(mazo.pop());
+			Jugador j = getJugadores().get(getJugadores().indexSiguiente());
+			darCartaAJugador(j);
+			darCartaAJugador(j);
+			darCartaAJugador(j);
+			darCartaAJugador(j);
 			turnoSiguiente();
 		} else if(carta.esCambiaSentido()) {
 			cambiarSentido();
 		} else if(carta.esSaltea()) {
-			indexActual = l.indexSiguiente();
-			l.setIndexActual(l.indexSiguiente());
+			indexActual = getJugadores().indexSiguiente();
+			getJugadores().setIndexActual(getJugadores().indexSiguiente());
 		}
 	}
 	
@@ -260,6 +325,12 @@ public class Juego implements java.io.Serializable {
 		l.cambiaSentido();
 	}
 	
+	/**
+	 * Valida la carta a tirar
+	 * @param delPozo ultima carta del pozo
+	 * @param aTirar carta a tirar
+	 * @return true si la carta a tirar el valida con respecto a la carta del pozo
+	 */
 	public boolean validaJugada (Carta delPozo, Carta aTirar){
 		if(!(validaColor(delPozo, aTirar) || validaValor(delPozo, aTirar))){
 			return false;
@@ -290,4 +361,16 @@ public class Juego implements java.io.Serializable {
 			j.vaciarMano();
 		}
 	}	
+	
+	private void setMazo(Mazo mazo) {
+		this.mazo = mazo;
+	}
+	
+	private void setPozo(Mazo pozo) {
+		this.pozo = pozo;
+	}
+	
+	public boolean getFaltanCartas() {
+		return this.faltanCartas;
+	}
 }
