@@ -1,22 +1,13 @@
 package cartas;
 
-/**
- * 
- * @author Team - UNO
- *
- */
 public abstract class CartaEspecial extends Carta {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Método constructor que crea la carta especial
-	 * 
-	 * @param valor
-	 * @param color
+	 * Constructor de la clase CartaEspecial
+	 * @param valor valor de la carta
+	 * @param color color de la carta
 	 */
 	public CartaEspecial(final String valor, final String color) {
 		super(valor, color);
