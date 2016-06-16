@@ -5,13 +5,19 @@ import java.util.List;
 import java.util.Random;
 import jugador.Jugador;
 
-@SuppressWarnings("serial")
+
 public class Ronda extends LinkedList<Jugador> {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private int indexActual;
 	private Jugador actual;
 	private boolean sentidoRonda;
 
+	/**
+	 * Constructor de la clase Ronda. Crea a los jugadores
+	 * @param nombres nombres de los jugadores
+	 */
 	public Ronda(List<String> nombres){
 		for ( String j : nombres){
 			Jugador j1 = new Jugador(j);
@@ -31,6 +37,11 @@ public class Ronda extends LinkedList<Jugador> {
 		}
 	}
 	
+	/**
+	 * Indica cual es el proximo jugador en la ronda
+	 * @param index index del jugador actual
+	 * @return index del siguiente jugador
+	 */
 	public int indexSiguiente(int index) {
 		if(this.sentidoRonda){
 			return indexSiguienteAntiHorario(index);
@@ -39,7 +50,9 @@ public class Ronda extends LinkedList<Jugador> {
 		}
 	}
 	
-	//cerramos el LinkedList, la hicimos ciruclar . Sentido antihorario
+	/**
+	 * Cierra la LinkedList, la hace ciruclar. Sentido antihorario
+	 */
 	private int indexSiguienteAntiHorario() {
 		if(getIndexActual()+1 == cantidadJugadores().intValue()) {
 			return 0;
@@ -54,7 +67,9 @@ public class Ronda extends LinkedList<Jugador> {
 		return index + 1;
 	}
 	
-	//la hicimos en sentido horario
+	/**
+	 * Cierra la LinkedList, la hace ciruclar. Sentido horario
+	 */
 	private int indexSiguienteHorario() {
 		
 		if(getIndexActual() == 0){
@@ -75,6 +90,9 @@ public class Ronda extends LinkedList<Jugador> {
 		return this.size();
 	}
 	
+	/**
+	 * Cambia el sentido de la ronda
+	 */
 	public void cambiaSentido() {
 		if(getSentidoRonda()){
 			setSentidoRonda(false);
