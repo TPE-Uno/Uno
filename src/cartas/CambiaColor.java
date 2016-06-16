@@ -3,7 +3,8 @@ package cartas;
 public class CambiaColor extends CartaEspecial {
 	
 	private static final long serialVersionUID = 1L;
-		private String colorElegido;
+	
+	private String colorElegido;
 		
 	/**
 	* Constructor de la clase CambiaColor
