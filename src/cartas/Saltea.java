@@ -1,21 +1,12 @@
 package cartas;
 
-/**
- * 
- * @author Team - UNO
- *
- */
 public class Saltea extends CartaEspecial {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Método constructor que cre la carta saltea
-	 * 
-	 * @param color
+	 * Constructor de la clase CartaEspecial
+	 * @param color color de la carta
 	 */
 	public Saltea(final String color) {
 		super("saltea", color);
