@@ -7,7 +7,6 @@ public class CartaTest {
 
 	@Test
 	public void testComparaColor() {
-		
 		assertTrue(Carta.validaColor("azul"));
 		assertTrue(Carta.validaColor("verde"));
 		assertTrue(Carta.validaColor("amarillo"));
@@ -16,6 +15,5 @@ public class CartaTest {
 		assertFalse(Carta.validaColor("1000000000000"));
 		assertFalse(Carta.validaColor(null));
 		assertFalse(Carta.validaColor("$"));
-	
 	}
 }
