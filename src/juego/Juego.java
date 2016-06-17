@@ -28,18 +28,6 @@ public class Juego implements java.io.Serializable {
 	 * @param primerIndex index del primer jugador
 	 */
 	public Juego(Ronda ronda, int primerIndex) {
-		if(ronda.size() == 2 && (primerIndex < 0 || primerIndex > 1)) {
-			throw new IllegalArgumentException();
-		}
-		else if(ronda.size() == 3 && (primerIndex < 0 || primerIndex > 2)) {
-			throw new IllegalArgumentException();
-		}
-		else if(ronda.size() == 4 && (primerIndex < 0 || primerIndex > 3)) {
-			throw new IllegalArgumentException();
-		}
-		else if(ronda.size() < 2 || ronda.size() > 4) {
-			throw new IllegalArgumentException();
-		}
 		this.faltanCartas = false;
 		this.estadoPartida = false;
 		this.mazo = new Mazo();
@@ -71,9 +59,6 @@ public class Juego implements java.io.Serializable {
 	 * @param nombres nombres de los jugadores
 	 */
 	public Juego(Integer cantJugadores, List<String> nombres) {
-		if(cantJugadores < 2 || cantJugadores > 4 || nombres.size() < 2 || nombres.size() > 2) {
-			throw new IllegalArgumentException();
-		}
 		this.faltanCartas = false;
 		this.estadoPartida = false;
 		this.mazo = new Mazo();
