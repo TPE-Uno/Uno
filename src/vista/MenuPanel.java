@@ -14,14 +14,14 @@ import controlador.ControladorDelJuego;
 @SuppressWarnings("serial")
 public class MenuPanel extends JPanel {
 	
-	public MenuPanel(ControladorDelJuego juegoControl) {
+	public MenuPanel(ControladorDelJuego juegoControl, JuegoFrame juegoFrame) {
 		setLayout(null);			
 		JButton btnIntrucciones = new JButton("Instrucciones");
 		btnIntrucciones.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnIntrucciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				InstruccionesPanel instrucciones = new InstruccionesPanel(juegoControl);
-				juegoControl.getJuegoFrame().setupFrame(instrucciones);
+				InstruccionesPanel instrucciones = new InstruccionesPanel(juegoControl, juegoFrame);
+				juegoFrame.setupFrame(instrucciones);
 			}
 		});
 		btnIntrucciones.setBounds(10, 396, 218, 56);
@@ -30,8 +30,8 @@ public class MenuPanel extends JPanel {
 		button.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EleccionJGPanel eleccion = new EleccionJGPanel(juegoControl);
-				juegoControl.getJuegoFrame().setupFrame(eleccion);
+				EleccionJGPanel eleccion = new EleccionJGPanel(juegoControl, juegoFrame);
+				juegoFrame.setupFrame(eleccion);
 			}
 		});
 		button.setBounds(10, 262, 218, 56);
@@ -41,8 +41,8 @@ public class MenuPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					SaveData data = (SaveData) ResourceManager.load("1.bin");
-					PartidaPanel partida = new PartidaPanel(data.getJuegoControl());
-					juegoControl.getJuegoFrame().setupFrame(partida);
+					PartidaPanel partida = new PartidaPanel(data.getJuegoControl(), juegoFrame);
+					juegoFrame.setupFrame(partida);
 				}
 				catch (Exception e2) {
 					System.out.println("No se pudo cargar la partida: " + e2.getMessage());

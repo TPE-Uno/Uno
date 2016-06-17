@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class CambiaColorPanel extends JFrame {
 	
-	public CambiaColorPanel(ControladorDelJuego juegoControl, int indexCarta) {
+	public CambiaColorPanel(ControladorDelJuego juegoControl, int indexCarta, JuegoFrame juegoFrame) {
 		setType(Type.UTILITY);
 		setResizable(false);
 		getContentPane().setLayout(null);
@@ -20,7 +20,7 @@ public class CambiaColorPanel extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				juegoControl.setColor("rojo");
 				dispose();
-				juegoControl.getJuegoFrame().setEnabled(true);
+				juegoFrame.setEnabled(true);
 			}
 		});
 		btnRojo.setBounds(63, 27, 105, 23);
@@ -30,7 +30,7 @@ public class CambiaColorPanel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				juegoControl.setColor("verde");
 				dispose();
-				juegoControl.getJuegoFrame().setEnabled(true);
+				juegoFrame.setEnabled(true);
 			}
 		});
 		btnVerde.setBounds(63, 60, 105, 23);
@@ -40,7 +40,7 @@ public class CambiaColorPanel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				juegoControl.setColor("azul");
 				dispose();
-				juegoControl.getJuegoFrame().setEnabled(true);
+				juegoFrame.setEnabled(true);
 			}
 		});
 		btnAzul.setBounds(63, 94, 105, 23);
@@ -50,7 +50,7 @@ public class CambiaColorPanel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				juegoControl.setColor("amarillo");
 				dispose();
-				juegoControl.getJuegoFrame().setEnabled(true);
+				juegoFrame.setEnabled(true);
 			}
 		});
 		btnAmarillo.setBounds(63, 128, 105, 23);

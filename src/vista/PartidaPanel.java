@@ -26,18 +26,18 @@ public class PartidaPanel extends JPanel {
 	private BotonPaso paso;
 	private PartidaPanel partida;
 	
-	public PartidaPanel(ControladorDelJuego juegoControl) {
+	public PartidaPanel(ControladorDelJuego juegoControl, JuegoFrame juegoFrame) {
 		setBackground(new Color(153, 204, 255));
 		this.juegoControl = juegoControl;
 		this.partida = this;
 		setLayout(null);
-		CartaMazoLabel cartaMazo = new CartaMazoLabel(juegoControl,this);
+		CartaMazoLabel cartaMazo = new CartaMazoLabel(juegoControl,this, juegoFrame);
 		this.cartaMazo = cartaMazo;
 		add(this.cartaMazo);
 		CartaPozoLabel cartaPozo = new CartaPozoLabel(valorPozo(), colorPozo(), juegoControl, this);
 		this.cartaPozo = cartaPozo;	
 		add(this.cartaPozo);
-		JugadorPanel jugadorActual = new JugadorPanel(juegoControl, this);
+		JugadorPanel jugadorActual = new JugadorPanel(juegoControl, this, juegoFrame);
 		this.jugadorActual = jugadorActual;
 		add(this.jugadorActual);
 		JMenuBar menuBar = new JMenuBar();
@@ -67,7 +67,7 @@ public class PartidaPanel extends JPanel {
 		});
 		mnArchivo.add(mntmSalir);
 		mostrarJugadoresEnEspera();
-		BotonPaso btnNewButton = new BotonPaso(juegoControl,this);
+		BotonPaso btnNewButton = new BotonPaso(juegoControl,this, juegoFrame);
 		this.paso = btnNewButton;
 		add(this.paso);
 		this.paso.setEnabled(false);

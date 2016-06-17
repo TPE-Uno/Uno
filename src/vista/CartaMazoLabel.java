@@ -12,7 +12,7 @@ public class CartaMazoLabel extends JLabel {
 
 	private boolean active;
 	
-	public CartaMazoLabel(ControladorDelJuego juegoControl, PartidaPanel partida) {
+	public CartaMazoLabel(ControladorDelJuego juegoControl, PartidaPanel partida, JuegoFrame juegoFrame) {
 		this.active = true;
 		setIcon(new ImageIcon(PartidaPanel.class.getResource("/imagenes/TraseraUNO.jpg")));
 		setBounds(568, 180, 90, 65);
@@ -24,10 +24,10 @@ public class CartaMazoLabel extends JLabel {
 					juegoControl.darCartaAJugador();
 					if(juegoControl.faltanCartas()) {
 						FaltaDeCartasPanel frame = new FaltaDeCartasPanel();
-						juegoControl.getJuegoFrame().setupFrame(frame);	
+						juegoFrame.setupFrame(frame);	
 					}
 					partida.remove(partida.getJugadorActualPanel());
-					JugadorPanel nuevoJugadorActual = new JugadorPanel(juegoControl, partida);
+					JugadorPanel nuevoJugadorActual = new JugadorPanel(juegoControl, partida, juegoFrame);
 					partida.setJugadorActuaLabel(nuevoJugadorActual);
 					partida.add(partida.getJugadorActualPanel());
 					partida.cartaMazoOff();

@@ -16,7 +16,7 @@ public class JugadorPanel extends JPanel {
 	private ControladorDelJuego juegoControl;
 	private boolean unoActivado;
 	
-	public JugadorPanel(ControladorDelJuego juegoControl, PartidaPanel partida) {
+	public JugadorPanel(ControladorDelJuego juegoControl, PartidaPanel partida, JuegoFrame juegoFrame) {
 		setBackground(new Color(153, 204, 255));
 		this.juegoControl = juegoControl;
 		setLayout(null);
@@ -31,7 +31,7 @@ public class JugadorPanel extends JPanel {
 		Point origin = new Point(10, 20);
 		mano.setBounds(36, 210, 1152, 153);
 		for(int i = 0; i < juegoControl.getJugadorIndexManoSize(juegoControl.indexActual()); i++) {
-			CartaJugadorLabel carta = new CartaJugadorLabel(juegoControl.valorCartaJActualIndex(i),juegoControl.colorCartaJActualIndex(i), juegoControl, i, partida);
+			CartaJugadorLabel carta = new CartaJugadorLabel(juegoControl.valorCartaJActualIndex(i),juegoControl.colorCartaJActualIndex(i), juegoControl, i, partida, juegoFrame);
 			carta.setBounds(origin.x, origin.y, 40, 62);
 			mano.add(carta, new Integer(0));
 			origin.x += 35;

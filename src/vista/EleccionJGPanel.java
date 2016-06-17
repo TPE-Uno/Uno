@@ -27,7 +27,7 @@ public class EleccionJGPanel extends JPanel {
 	private List<String> nombres;
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public EleccionJGPanel(ControladorDelJuego juegoControl) {
+	public EleccionJGPanel(ControladorDelJuego juegoControl, JuegoFrame juegoFrame) {
 		setBackground(new Color(154, 205, 50));
 		this.nombres = new Vector<String>();
 		setLayout(null);
@@ -94,7 +94,7 @@ public class EleccionJGPanel extends JPanel {
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				juegoControl.getJuegoFrame().setupFrame(juegoControl.getJuegoFrame().getMenu());
+				juegoFrame.setupFrame(juegoFrame.getMenu());
 			}
 		});
 		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -114,8 +114,8 @@ public class EleccionJGPanel extends JPanel {
 					juegoControl.setCantJugadores(cantJugadores);
 					juegoControl.setNombres(nombres);
 					juegoControl.inicioDelJuego();
-					PartidaPanel partida = new PartidaPanel(juegoControl);
-					juegoControl.getJuegoFrame().setupFrame(partida);
+					PartidaPanel partida = new PartidaPanel(juegoControl, juegoFrame);
+					juegoFrame.setupFrame(partida);
 					}
 			}
 		});

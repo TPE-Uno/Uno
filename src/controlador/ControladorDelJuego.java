@@ -1,12 +1,9 @@
 package controlador;
 
 import java.util.List;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import cartas.*;
 import juego.Juego;
 import jugador.Jugador;
-import vista.JuegoFrame;
 
 public class ControladorDelJuego implements java.io.Serializable {
 
@@ -14,20 +11,7 @@ public class ControladorDelJuego implements java.io.Serializable {
 	
 	private Integer cantJugadores;
 	private List<String> nombres;
-	private Juego juego;
-	private JuegoFrame juegoFrame;
-	
-	public void abreVentana() {
-		juegoFrame = new JuegoFrame(this);
-	}
-	
-	public JuegoFrame getJuegoFrame() {
-		return this.juegoFrame;
-	}
-	
-	public void CrearJugadores(String[] nombres) {
-		
-	}
+	private Juego juego;	
 	
 	public void jugarCarta(int index) {
 		Carta cartaIndex = getCartaIndex(index);
@@ -192,13 +176,12 @@ public class ControladorDelJuego implements java.io.Serializable {
 		return juego.getEstadoPartida();
 	}
 	
-	public void sumarPuntos() {
+	public boolean sumarPuntos() {
 		juego.puntaje();
 		if(juego.getActual().getPuntaje() >= 500) {
-			getJuegoFrame().dispose();
-			JFrame frame = new JFrame();
-			JOptionPane.showMessageDialog(frame, "GANO "+juego.getActual().getNombre()+"!!!");
+			return true;
 		}
+		return false;
 	}
 	
 	public void iniciaNuevaPartida() {
@@ -212,5 +195,9 @@ public class ControladorDelJuego implements java.io.Serializable {
 	
 	public Juego getJuego() {
 		return this.juego;
+	}
+	
+	public String getJANombre() {
+		return juego.getActual().getNombre();
 	}
 }

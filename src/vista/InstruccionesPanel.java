@@ -12,12 +12,12 @@ import javax.swing.ImageIcon;
 @SuppressWarnings("serial")
 public class InstruccionesPanel extends JPanel {
 	
-	public InstruccionesPanel(ControladorDelJuego juegoControl) {
+	public InstruccionesPanel(ControladorDelJuego juegoControl, JuegoFrame juegoFrame) {
 		setLayout(null);
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				juegoControl.getJuegoFrame().setupFrame(juegoControl.getJuegoFrame().getMenu());
+				juegoFrame.setupFrame(juegoFrame.getMenu());
 			}
 		});
 		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 24));

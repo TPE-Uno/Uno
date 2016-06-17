@@ -14,7 +14,7 @@ public class JuegoFrame extends JFrame {
 	public JuegoFrame(ControladorDelJuego juegoControl) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
-		menu = new MenuPanel(juegoControl);
+		menu = new MenuPanel(juegoControl, this);
 		setupFrame(menu);
 		this.setLocationRelativeTo(null);
 		Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagenes/icon.png"));
